@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- 此页面是模板引擎生成的 -->
+<html lang="zh-CN">
+<head>
+    {{ include './header.art' }}
+</head>
+<body>
+    <div class="main">
+        <div class="container moveup">
+            <div class="site-name moveup">{{site.name}}</div>
+            <div class="site-subtitle moveup">{{site.subtitle}}</div>
+            <div class="divider moveup"></div>
+            <div class="saying moveup">{{site.saying}}</div>
+            <div class="site-links moveup">
+                {{each site.links}}
+                    <a class="site-link" target="_blank" href="{{$value.href}}">{{$value.name}}</a>
+                {{/each}}
+            </div>
+            <div class="icons-social moveup">
+                {{each site.social}}
+                    <a target="_blank" href="{{$value.href}}"><i class="{{$value.icon}}"></i></a>
+                {{/each}}
+            </div>
+            {{if theme.puppet == 'lovebear'}}
+                {{ include './lovebear.art' }}
+            {{else if theme.puppet == 'lovedog'}}
+                {{ include './lovedog.art' }}
+            {{else if theme.puppet == 'lovecactus'}}
+                {{ include './lovecactus.art' }}
+            {{else}}
+                <!-- 独行侠木有宠物 -->
+            {{/if}}
+            <i class="fas fa-compact-disc" id="music"></i>
+            <!-- preload: none，否则阻碍其他资源的加载，比如下面js中的图片 -->
+            <audio src="{{theme.audio}}" id="audio" preload="none" loop hidden></audio>
+        </div>
+    </div>
+</body>
+<script src="main.js"></script>
+</html>

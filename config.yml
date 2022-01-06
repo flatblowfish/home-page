@@ -1,0 +1,41 @@
+#
+###########################################################
+#
+# home-page: a simple home page generator
+# Copyright (C) flatblowfish
+# Github:   https://github.com/flatblowfish
+# Website:  https://blog.maplesugar.top
+#
+###########################################################
+#
+# 页面标题
+title: 枫糖
+name: 枫糖
+subtitle: 窗明几净
+saying: 有一个夜晚我烧毁了所有的记忆，从此我的梦就透明了。有一个早晨我扔掉了所有的昨天，从此我的脚步就轻盈了。
+links:
+-
+    href: https://blog.maplesugar.top
+    name: 博客
+-
+    href: https://so.maplesugar.top
+    name: 资源
+-
+    href: https://blog.maplesugar.top/message
+    name: 留言
+social:
+-
+    href: mailto:flatblowfish@gmail.com
+    icon: far fa-envelope
+-
+    href: https://blog.maplesugar.top
+    icon: fab fa-wordpress
+-
+    href: https://blog.maplesugar.top/message
+    icon: far fa-comment
+-
+    href: https://github.com/flatblowfish
+    icon: fab fa-github
+# a-glass-of-water
+# dev-landing-page
+theme: a-glass-of-water

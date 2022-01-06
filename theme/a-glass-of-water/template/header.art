@@ -1,0 +1,190 @@
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{site.title}}</title>
+<link rel="apple-touch-icon" sizes="180x180" href="image/apple-touch-icon.png">
+<!-- Google Font -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe:normal|Noto+Serif+SC:normal|Noto+Sans+SC:normal&subset=latin">
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<!-- Jquery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- jquery.ripples -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js" integrity="sha512-zuZ5wVszlsRbRF/vwXD0QS/tHzBYHFzCD/BT0lI3yrWhNZFWDkkF3KPEY//WTanqxwPdZkskQ+xZo0rnfHBc5A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- CSS Reset -->
+<style>
+    html {
+        box-sizing: border-box;
+        font-size: 12px;
+    }
+
+    *, *:before, *:after {
+        box-sizing: border-box;
+    }
+
+    body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+        margin: 0;
+        padding: 0;
+        font-weight: normal;
+    }
+
+    ol, ul {
+        list-style: none;
+    }
+
+    a {
+        cursor: pointer;
+        text-decoration:none;
+        -webkit-tap-highlight-color: transparent;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
+<!-- 主样式 -->
+<style>
+    .main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        /* love-bear 使用了scale，会造成页面出现滚动条 */
+        overflow: hidden;
+        height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+        height: calc(var(--vh, 1vh) * 100);
+        font-family: 'Noto Serif SC';
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        max-width: 780px;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: hsla(0,0%,100%,.15);
+        color: #FAFAFA;
+    }
+    {{if theme.frostedGlass}}
+        .container {
+            backdrop-filter: blur(4px);
+        }
+    {{/if}}
+    /* 标题动态变色 */
+    @-webkit-keyframes site-name-bg {
+        0%   {background-position:0% 0%;}
+        25%  {background-position:25% 25%;}
+        50%  {background-position:50% 50%;}
+        75%  {background-position:75% 75%;}
+        75%  {background-position:100% 100%;}
+    }
+    .site-name {
+        margin-left: 0.5em;
+        margin-right: 0.5em;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-animation: site-name-bg 8s infinite linear;
+        font-family: 'ZCOOL KuaiLe', 'PingFang SC', 'Microsoft YaHei', sans-serif;;
+        font-size: 3.75em;
+        font-weight: normal;
+        background-image: url(image/site-name-bg.png);
+    }
+    .site-subtitle {
+        margin-top: 0.5em;
+        font-size: 1.5em;
+        font-weight: lighter;
+        line-height: 1.5em;
+        letter-spacing: 3px;
+        color: #FAFAFA;
+    }
+    .divider {
+        width: 50%;
+        margin: 20px auto;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .saying {
+        font-size: 1.2em;
+    }
+    .site-links {
+        margin: 35px 0;
+        text-align: center;
+        font-family: 'Noto Sans SC';
+    }
+    .site-link {
+        display: inline-block;
+        margin: 5px 10px;
+        padding: 5px 15px;
+        font-size: 1.5em;
+        /* 最后的字符后面仍然有4px空白 */
+        letter-spacing: 4px;
+        text-indent: 4px;
+        font-weight: normal;
+        color: #FAFAFA;
+        border: 1px solid #FAFAFA;
+        border-radius: 20px;
+    }
+    .icons-social {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: calc(100% - 100px);
+    }
+    .icons-social a {
+        color: #FAFAFA;
+    }
+    .icons-social i {
+        padding: 10px;
+        font-size: 2em;
+    }
+    /* 上升动画 */
+    .moveup {
+        opacity: 0;
+        transform: translate3d(0, 80px, 0);
+        transition: all 2s cubic-bezier(0.19, 1, 0.22, 1)
+    }
+    .moveup.up {
+        opacity: 1;
+        transform: translate3d(0, 0, 0)
+    }
+    /* 背景图片 透明度动画 */
+    /* 注意：只有chrome 支持 transition:background-image 动画，firefox不支持 */
+    /* .bg {
+        transition: background-image 3s ease;
+    } */
+    /* 音乐按钮 */
+    @keyframes rotate {
+        from {
+            transform: rotate(0deg);
+        }
+        to{
+            transform: rotate(360deg);
+        }
+    }
+    #music {
+        position: absolute;
+        bottom: 26px;
+        left: 20px;
+        font-size: 2.5em;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        animation: rotate 3s linear infinite;
+        animation-play-state: paused;
+    }
+    #music.play {
+        animation-play-state: running;
+    }
+    @media screen and (max-width: 800px) {
+        .container {
+            margin: auto 15px;
+        }
+        .site-link {
+            margin: 4px 8px;
+            padding: 3px 10px;
+            letter-spacing: 2px;
+            text-indent: 2px;
+            border-radius: 18px;
+        }
+    }
+</style>

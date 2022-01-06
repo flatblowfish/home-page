@@ -1,0 +1,512 @@
+<div class="lovebear-container lovebear-moveup">
+    <div class="lovebear-wrapper">
+        <div class="lovebear-ballons">
+            <div class="lovebear-heart">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="lovebear-animal">
+            <div class="lovebear-ears"></div>
+            <div class="lovebear-body">
+                <div class="lovebear-eyes"></div>
+                <div class="lovebear-nose">
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="lovebear-hands">
+                    <div class="lovebear-left_hand">
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="lovebear-right_hand">
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="lovebear-legs">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- lovebear 小木偶 -->
+<style>
+    /* lovebear 小木偶 上升动画 */
+    .lovebear-moveup {
+        opacity: 0;
+        transform: translate3d(0, -180px, 0) scale(0.3);
+        transition: all 2s cubic-bezier(0.19, 1, 0.22, 1)
+    }
+    .lovebear-moveup.lovebear-up {
+        opacity: 1;
+        transform: translate3d(0, -0px, 0) scale(0.3);
+    }
+    .lovebear-container {
+        width: 100%;
+        /* transform: scale(0.3); */
+        position: absolute;
+        bottom: -140px;
+        right: calc(-50% + 60px);
+    }
+    .lovebear-wrapper {
+        width: 500px;
+        margin: 200px auto 0;
+        height: 200px;
+        /* border-bottom:10px solid #ddd; */
+        position: relative;
+    }
+    .lovebear-animal {
+        position: relative;
+        animation: animal 2s  1s infinite alternate;
+    }
+    /*body*/
+    .lovebear-body {
+        background-color: #cccccc;
+        border: 2px solid #000;
+        width: 170px;
+        height: 170px;
+        border-radius: 30px;
+        margin: 0 auto;
+        position: relative;
+    }
+    .lovebear-body:before {
+        content: "";
+        position: absolute;
+        left: 5px;
+        right: 5px;
+        bottom: 10px;
+        top: 0;
+        border-radius: 30px;
+        background-color: #ffffff;
+    }
+    /*Ears*/
+    .lovebear-ears {
+        position: absolute;
+        top:  0;
+        left: 50%;
+        right: -10px;
+        height: 20px;
+        width: 180px;
+        transform: translateX(-50%);
+    }
+    .lovebear-ears:before,
+    .lovebear-ears:after {
+        content: "";
+        background-color: #000000;
+        width: 15px;
+        height: 30px;
+        float: left;
+        border-radius: 10px;
+        transform: rotate(-45deg);
+    }
+    .lovebear-ears:after {
+        float: right;
+        transform: rotate(45deg);
+    }
+    /*Ballons*/
+    .lovebear-ballons {
+        position: absolute;
+        left: 84.8%;
+        z-index: 99;
+        width: 150px;
+        height: 150px;
+        top: -70px;
+        animation: ballons 2s  1s infinite alternate;
+        transform: translateX(-50%) scale(1,1.1);
+    }
+    .lovebear-ballons:before {
+        content: "";
+        position: absolute;
+        left: 20px;
+        top: 106px;
+        z-index: 99;
+        width: 2px;
+        height: 60px;
+        background: #000;
+    }
+    .lovebear-ballons .lovebear-heart {
+        position: relative;
+        animation: heart 2s  1s infinite alternate;
+    }
+    .lovebear-ballons .lovebear-heart span {
+        width: 60px;
+        height: 100px;
+        background: #ef4023;
+        position: absolute;
+        left: 5px;
+        top: 0;
+        border-radius: 50px 50px 0 0;
+        border-bottom: 0;
+        transform: rotate(45deg);
+    }
+    .lovebear-ballons .lovebear-heart span:last-child {
+        right: 113px;
+        left: initial;
+        transform: scale(-1,1) rotate(45deg);
+    }
+    /*Eyes*/
+    .lovebear-eyes {
+        position: absolute;
+        left: 50%;
+        width: 130px;
+        top: 24px;
+        transform: translateX(-50%);
+    }
+    .lovebear-eyes:before,
+    .lovebear-eyes:after {
+        content: "";
+        background-color: #000;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        float: right;
+        animation: eyes 2s  1s infinite alternate;
+    }
+    .lovebear-eyes:after {
+        float: left;
+    }
+    /*nose*/
+    .lovebear-nose {
+        position: absolute;
+        left: 50%;
+        top: 30px;
+        width: 20px;
+        height: 20px;
+        transform: translateX(-50%);
+    }
+    .lovebear-nose:before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 7px;
+        bottom: 4px;
+        background-color: #938E8F;
+        z-index: 9;
+        width: 2px;
+        transform: translateX(-50%);
+    }
+    .lovebear-nose:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        top: 0;
+        left: 50%;
+        border: 8px solid transparent;
+        border-top-color: #000000;
+        border-radius: 8px;
+        transform: translateX(-50%);
+    }
+    .lovebear-nose span {
+        width: 10px;
+        height: 8px;
+        border: 2px solid #938E8F;
+        border-radius: 50%;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        transform: rotate(-10deg);
+    }
+    .lovebear-nose span:last-child {
+        right: 0;
+        left: inherit;
+        transform: rotate(10deg);
+    }
+    .lovebear-nose span:before {
+        content: "";
+        background: #fff;
+        position: absolute;
+        left: -3px;
+        right: -3px;
+        bottom: 3px;
+        top: -3px;
+    }
+    /*Hands*/
+    .lovebear-hands .lovebear-left_hand {
+        position: absolute;
+        left: 5px;
+        top: 70px;
+        width: 35px;
+        height: 60px;
+    }
+    .lovebear-hands .lovebear-left_hand:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: -10px;
+        right: 0;
+        background: #fff;
+        height: 13px;
+        z-index: 9;
+    }
+    .lovebear-hands .lovebear-left_hand:after {
+        content: "";
+        border: 2px solid #000;
+        position: absolute;
+        left: 5px;
+        right: 4px;
+        bottom: -18px;
+        height: 30px;
+        z-index: 0;
+        border-radius: 19px;
+        box-shadow: inset 25px 0 0 rgba(0,0,0,.2);
+        transform: rotate(-20deg);
+    }
+    .lovebear-hands .lovebear-left_hand span {
+        background-color: #fff;
+        border-left: 2px solid #000;
+        width: 15px;
+        height: 65px;
+        position: absolute;
+        border-radius: 50%;
+        left: 0;
+        top: 0;
+    }
+    .lovebear-hands .lovebear-left_hand span:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #fff;
+        height: 5px;
+    }
+    .lovebear-hands .lovebear-left_hand span:after {
+        content: "";
+        background: #fff;
+        border-radius: 0 0 30px 30px;
+        position: absolute;
+        bottom: -6px;
+        left: 3.3px;
+        right: -11.5px;
+        height: 27px;
+        z-index: 9;
+        box-shadow: inset 4px 0 0 rgba(0,0,0,.2);
+        transform: rotate(-15deg);
+    }
+    .lovebear-hands .lovebear-left_hand span:last-child {
+        left: 25px;
+        top: -3px;
+    }
+    .lovebear-hands .lovebear-left_hand span:last-child:after  {
+        display: none;
+    }
+    .lovebear-hands .lovebear-right_hand {
+        position: absolute;
+        right: -26px;
+        top: 70px;
+        width: 35px;
+        height: 60px;
+        animation: right_hand 2s  1s infinite alternate;
+        -webkit-animation: right_hand 2s  1s infinite alternate;
+        -moz-animation: right_hand 2s  1s infinite alternate;
+        -ms-animation: right_hand 2s  1s infinite alternate;
+        -o-animation: right_hand 2s  1s infinite alternate;
+        transform: rotate(-47deg);
+    }
+    .lovebear-hands .lovebear-right_hand:before {
+        content: "";
+        border: 2px solid #000;
+        width: 19.2px;
+        height: 30px;
+        position: absolute;
+        border-radius: 0 0 30px 30px;
+        bottom: -6px;
+        background: #f5f5f5;
+        z-index: 9;
+        right: 0px;
+        transform: rotate(-30deg);
+    }
+    .lovebear-hands .lovebear-right_hand:after {
+        content: "";
+        width: 17px;
+        height: 18px;
+        background-color: #fff;
+        position: absolute;
+        bottom: 10px;
+        z-index: 9;
+        right: 6.4px;
+        transform: rotate(-30deg);
+    }
+    .lovebear-hands .lovebear-right_hand span {
+        border-left: 2px solid #000;
+        width: 10px;
+        height: 40px;
+        position: absolute;
+        border-radius: 50%;
+        right: 0;
+        top: 0;
+    }
+    .lovebear-hands .lovebear-right_hand span:first-child:before {
+        content: "";
+        border: 2px solid #000;
+        position: absolute;
+        background-color: #fff;
+        right: -3px;
+        bottom: -26px;
+        width: 20px;
+        height: 16px;
+        z-index: 10;
+        border-radius: 15px 20px 20px 18px;
+        transform: rotate(57deg);
+    }
+    .lovebear-hands .lovebear-right_hand span:first-child:after {
+        content: "";
+        position: absolute;
+        bottom: -9px;
+        right: -4px;
+        width: 6px;
+        height: 10px;
+        border: 2px solid #000;
+        border-left: 0;
+        border-radius: 10px 30px 30px 10px;
+        z-index: 99;
+        background-color: #fff;
+        transform: rotate(-29deg);
+    }
+    .lovebear-hands .lovebear-right_hand span:last-child {
+        right: 20px;
+        top: 5px;
+    }
+    .lovebear-hands .lovebear-right_hand span:last-child:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 5px;
+        top: 0;
+        background-color: #fff;
+        height: 5px;
+    }
+    .lovebear-hands .lovebear-right_hand span:last-child:after {
+        content: "";
+        position: absolute;
+        left: 0px;
+        top: 2px;
+        width: 18.7px;
+        height: 35px;
+        background: #fff;
+        border-radius: 0 0 10px 10px;
+        transform: rotate(0deg);
+    }
+    /*Legs*/
+    .lovebear-legs {
+        margin: 0 auto;
+        text-align: center;
+        height: 60px;
+    }
+    .lovebear-legs span {
+        width: 10px;
+        height: 20px;
+        border-right: 2px solid #605d5e;
+        border-left: 2px solid #605d5e;
+        display: inline-block;
+        margin: 0 20px;
+        position: relative;
+        top: -8px;
+        z-index: -1;
+        animation: right_leg 2s  1s infinite alternate;
+        transform: rotate(5deg);
+    }
+    .lovebear-legs span:before {
+        content: "";
+        width: 25px;
+        height: 10px;
+        position: absolute;
+        border-radius: 0 20px 20px 20px;
+        border: 2px solid #000;
+        left: -2px;
+        bottom: -12px;
+    }
+    .lovebear-legs span:after {
+        content: "";
+        background-color: #f5f5f5;
+        right: 0;
+        left: 0;
+        position: absolute;
+        bottom: -2px;
+        height: 7px;
+    }
+    .lovebear-legs span:first-child {
+        animation: left_leg 2s  1s infinite alternate;
+        transform: rotate(-5deg);
+    }
+    .lovebear-legs span:first-child:before {
+        right: -2px;
+        left: inherit;
+        border-radius: 20px 0 20px 20px;
+    }
+    /*Heart*/
+    @keyframes heart {
+        0% {
+            transform:scale(.8);
+            top: 22px;
+            right: 11px;
+        }
+        to {
+            transform: scale(1.2);
+            top: -21px;
+            right: -11px;
+        }
+    }
+    /*Eyes*/
+    @keyframes eyes {
+        from {
+            width: 10px;
+            height: 10px;
+        }
+        to {
+            width: 15px;
+            height: 15px;
+        }
+    }
+    /*Ballons*/
+    @keyframes ballons {
+        from {
+            top: -70px;
+        }
+        to {
+            top: -180px
+        }
+    }
+    /*Animal*/
+    @keyframes animal {
+        from {
+            bottom: 0;
+        }
+        to {
+            bottom: 74px;
+        }
+    }
+    /*Right Hand*/
+    @keyframes right_hand {
+        from {
+            transform: rotate(-47deg);
+            top: 70px;
+        }
+        to {
+            transform: rotate(-80deg);
+            top: 50px;
+        }
+    }
+    /*Left Leg*/
+    @keyframes left_leg {
+        0% {
+            transform: rotate(-5deg);
+        }
+        100% {
+            transform: rotate(-30deg);
+        }
+    }
+    /*Right Leg*/
+    @keyframes right_leg {
+        0% {
+            transform: rotate(5deg);
+        }
+        100% {
+            transform: rotate(30deg);
+        }
+    }
+</style>

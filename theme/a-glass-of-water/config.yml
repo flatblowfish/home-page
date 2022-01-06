@@ -1,0 +1,25 @@
+#
+###########################################################
+#
+# Copyright (C) flatblowfish
+# Github:   https://github.com/flatblowfish
+# Website:  https://blog.maplesugar.top
+#
+# Description: A simple home page for maplesugar.top with dreamlike style
+#
+# Ripple background with random pic, and fade background with random pic on phone
+# Audio you love autoplaying
+# Three lovely puppets
+#
+# Font Awesome 5.15.4，注意图标的版本
+#
+###########################################################
+#
+desc: A simple home page for maplesugar.top with dreamlike style
+# 毛玻璃
+frostedGlass: true
+audio: 'audio/Freeman _ Dan Kubo _ DJ Drilla - Sweet Word (Dan Kubo Remix).mp3'
+# lovebear: https://codepen.io/ahmediz/pen/PGaBEd
+# lovedog: https://codepen.io/davidkpiano/pen/wMqXea
+# lovecactus: https://codepen.io/helloheyjess/pen/ggXqEB
+puppet: lovebear
